@@ -1,0 +1,13 @@
+{
+  "iss": "https://passport.authority.corp.example",
+  "sub": "agent_sales_summariser_v2",
+  "jti": "tok_01k0def789ghi012",
+  "passport_id": "ppt_01k0abc123def456",
+  "session_id": "sess_01j9zk2a3b4c5d6e7f8g9h0i",
+  "capabilities": ["read_crm"],
+  "resources": ["crm_api:/v1/customers/*"],
+  "methods": ["GET"],
+  "nbf": 1719133200,
+  "exp": 1719134100,
+  "runtime_attestation_hash": null
+}
