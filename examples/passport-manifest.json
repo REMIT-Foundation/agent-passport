@@ -1,0 +1,56 @@
+{
+  "passport_version": "1.0",
+  "passport_id": "ppt_01k0abc123def456",
+  "allowed_profile_id": "profile_01j9za9k0l1m2n3o4p5q6r7s",
+  "issuer": "https://passport.authority.corp.example",
+  "issued_at": "2026-06-23T09:00:00Z",
+  "expires_at": "2026-06-23T17:00:00Z",
+  "identity": {
+    "agent_id": "agent_sales_summariser_v2",
+    "public_key": "base64url-ed25519-public-key",
+    "key_algorithm": "Ed25519"
+  },
+  "session": {
+    "session_id": "sess_01j9zk2a3b4c5d6e7f8g9h0i",
+    "org_id": "org_01j9za1b2c3d4e5f6g7h8i9j",
+    "task": "Summarise total revenue by product for Q1 2026."
+  },
+  "capabilities": [
+    {
+      "name": "read_crm",
+      "tools": ["crm_api"],
+      "resources": ["crm_api:/v1/customers/*", "crm_api:/v1/orders/*"],
+      "methods": ["GET"],
+      "constraints": {
+        "fields_allowlist": ["id", "name", "revenue", "product_id", "order_date"]
+      }
+    },
+    {
+      "name": "text_output",
+      "tools": ["text_generation"],
+      "resources": ["text_generation:/complete"],
+      "methods": ["POST"],
+      "constraints": {
+        "max_output_tokens": 2000
+      }
+    }
+  ],
+  "denies": [
+    { "type": "tool", "value": "ssh_exec" },
+    { "type": "tool", "value": "send_email" },
+    { "type": "tool", "value": "code_execution" },
+    { "type": "network", "value": "10.0.0.0/8" },
+    { "type": "network", "value": "192.168.0.0/16" },
+    { "type": "data_class", "value": "credentials" }
+  ],
+  "context_constraints": {
+    "environment": "production",
+    "max_actions": 50,
+    "max_duration_seconds": 3600
+  },
+  "signature": {
+    "algorithm": "Ed25519",
+    "key_id": "corp-passport-root-2026",
+    "value": "base64url-signature"
+  }
+}
